@@ -2,6 +2,7 @@ import { Box, LinearProgress, Typography } from '@mui/material';
 
 interface ILinearProgressWithLabel {
   value: number;
+  color?: 'inherit' | 'primary' | 'secondary' | 'success' | 'primary';
 }
 
 function LinearProgressWithLabel(props: ILinearProgressWithLabel) {
