@@ -1,0 +1,23 @@
+.sign-up {
+  padding: 20px;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  &__avatar-container{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+}
