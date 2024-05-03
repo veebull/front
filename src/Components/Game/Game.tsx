@@ -5,6 +5,7 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Home from '../Home/Home';
 import GameHeader from '../GameHeader/GameHeader';
 import Invites from '../Invites/Invites';
+import Tasks from '../Tasks/Tasks';
 
 export default function Game() {
   const [tab, setTab] = useState('home');
@@ -18,7 +19,6 @@ export default function Game() {
 
   return (
     <div className="game">
-      <p>{window.location.href}</p>
       <GameHeader headerClass="game__header" colorClass="game__color" />
       <ToggleButtonGroup
         className="game__btn-background"
@@ -40,7 +40,7 @@ export default function Game() {
           <Route path="home" element={<Home />} />
           <Route path="invites" element={<Invites />} />
           <Route path="achievements" element={<div>Достижения</div>} />
-          <Route path="tasks" element={<div>Задания</div>} />
+          <Route path="tasks" element={<Tasks />} />
           <Route index element={<Navigate to={'home'} />} />
         </Routes>
       </main>

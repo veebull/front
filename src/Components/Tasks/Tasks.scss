@@ -1,0 +1,70 @@
+@import "../../lib/constants";
+
+@keyframes sway-y {
+  from {
+    transform: translateY(-3px); /* Начальное положение - смещение вверх на 3 пикселя */
+  }
+
+  to {
+    transform: translateY(3px); /* Конечное положение - смещение вниз на 3 пикселя */
+  }
+}
+
+@keyframes sway-x {
+  from {
+    transform: translateX(-3px); /* Начальное положение - смещение вверх на 3 пикселя */
+  }
+
+  to {
+    transform: translateX(3px); /* Конечное положение - смещение вниз на 3 пикселя */
+  }
+}
+
+
+.tasks {
+  @include game-background-elements;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 20px;
+
+
+  &__list {
+    width: 100%;
+    padding: 0 20px;
+    margin: 0;
+
+    list-style: none;
+
+
+  }
+
+  &__item {
+    padding-bottom: 10px;
+
+    grid-template-columns: min-content 1fr max-content min-content;
+    display: grid;
+    gap: 10px;
+    align-items: center;
+  }
+
+
+  &__btn {
+    @include game-color-text;
+
+    transform: translate(0);
+
+    &_sway-y {
+      animation: sway-y 2s ease-in-out infinite alternate;
+    }
+
+    &_sway-x {
+      animation: sway-x 2s ease-in-out infinite alternate;
+    }
+  }
+
+}
