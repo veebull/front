@@ -31,7 +31,7 @@ const SignUp = ({ onContinue, refLink }: ISignUp) => {
   };
 
   const handleContinue = () => {
-    updateGlobalUser((prev) => ({ ...prev, name }));
+    updateGlobalUser((prev) => ({ ...prev, name, byReferer: refLink || 'none' }));
     onContinue();
     navigate('./sign-in');
   };

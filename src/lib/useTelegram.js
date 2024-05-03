@@ -1,11 +1,13 @@
 export default function useTelegram() {
   const tg = window?.Telegram?.WebApp;
-  let avatar, userId, nickName;
+  let avatar, userId, nickName, startParam;
+
   if (tg) {
     avatar = tg.initDataUnsafe.user?.photo_url;
     userId = tg.initDataUnsafe.user?.id;
-    nickName = tg.initDataUnsafe.user?.first_name;
+    nickName = tg.initDataUnsafe.user?.username;
+    startParam = tg.initDataUnsafe?.start_param;
   }
 
-  return { tg, avatar, userId, nickName };
+  return { tg, avatar, userId, nickName, startParam };
 }

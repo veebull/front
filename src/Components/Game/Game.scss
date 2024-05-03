@@ -1,22 +1,9 @@
 @import "../../lib/constants";
 
-* {
-  $main-color: $game-text-color;
-  $secondary-color: $game-text-color2;
-
-  color: $main-color !important;
-  text-shadow:
-    0 0 7px $main-color,
-    0 0 10px $main-color,
-    0 0 21px $main-color,
-    0 0 42px $secondary-color,
-    0 0 82px $secondary-color,
-    0 0 92px $secondary-color,
-    0 0 102px $secondary-color,
-    0 0 151px $secondary-color,
-}
 
 .game {
+  @include game-color-text;
+
   min-height: 100vh;
   display: grid;
   grid-template-rows: 8% 8% 76% 8%;
@@ -26,12 +13,21 @@
   background-position: top;
 
   &__header{
+    @include game-background-elements;
+
     display: grid;
     place-items: center center;
     place-content: center center;
     grid-template-columns: min-content 1fr min-content;
     padding: 0 10px;
     overflow: hidden;
-    background-color: rgb(0 0 0 / 50%);
+  }
+
+  &__color {
+    @include game-color-text;
+  }
+
+  &__btn-background {
+    @include game-background-elements;
   }
 }

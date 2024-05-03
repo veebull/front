@@ -1,2 +1,18 @@
-$game-text-color: #65aff4;
-$game-text-color2: #0fa;
+$game-text-color: #1e86e8;
+$game-text-color2: rgb(235 60 218);
+
+@mixin game-background-elements {
+  background: rgb(0 0 0 / 50%);
+}
+
+@mixin game-color-text {
+  // TODO: поправить интеграцию стилей
+  color: $game-text-color;
+
+  text-shadow:
+    0 0 7px currentcolor,
+    0 0 10px currentcolor,
+    0 0 21px currentcolor,
+    0 0 42px $game-text-color2,
+    0 0 82px $game-text-color2,
+}

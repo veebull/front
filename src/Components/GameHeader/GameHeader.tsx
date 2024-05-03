@@ -8,10 +8,10 @@ import { useAtomValue } from 'jotai';
 
 interface IGameHeader {
   headerClass?: string;
-  headerBtnClass?: string;
+  colorClass?: string;
 }
 
-const GameHeader = ({ headerClass = 'game__header' }: IGameHeader) => {
+const GameHeader = ({ headerClass = 'game__header', colorClass = 'game__color' }: IGameHeader) => {
   const [isSound, setIsSound] = useState(false);
   const toggleSound = () => setIsSound(!isSound);
   const user = useAtomValue(userAtom);
@@ -21,6 +21,7 @@ const GameHeader = ({ headerClass = 'game__header' }: IGameHeader) => {
 
     if (isSound) {
       audio.play();
+      audio.loop = true;
     }
 
     return () => {
@@ -31,7 +32,9 @@ const GameHeader = ({ headerClass = 'game__header' }: IGameHeader) => {
 
   return (
     <header className={headerClass}>
-      <IconButton onClick={toggleSound}>{isSound ? <MusicNoteIcon color="secondary" /> : <MusicOffIcon />}</IconButton>
+      <IconButton onClick={toggleSound} className={colorClass}>
+        {isSound ? <MusicNoteIcon /> : <MusicOffIcon />}
+      </IconButton>
       <div>
         <Typography variant="h6">
           Total TON: <span>{user.totalTON}</span>
