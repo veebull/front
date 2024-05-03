@@ -13,7 +13,9 @@ export default function Game() {
   const [tab, setTab] = useState('home');
 
   useEffect(() => {
-    navigate(`./${tab || 'home'}`);
+    const newLocation = tab || 'home';
+    setTab(newLocation);
+    navigate(`./${newLocation}`);
   }, [navigate, tab]);
 
   return (
