@@ -2,15 +2,11 @@ import './App.css';
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import useTelegram from '~/lib/useTelegram';
+import Loader from '../Loader/Loader';
+
 const SignUp = lazy(() => import('../SignUp/SignUp'));
 const LoadingPage = lazy(() => import('../LoadingPage/LoadingPage'));
-const Loader = lazy(() => import('../Loader/Loader'));
 const Game = lazy(() => import('../Game/Game'));
-
-const Home = lazy(() => import('../Home/Home'));
-const Invites = lazy(() => import('../Invites/Invites'));
-const Achievements = lazy(() => import('../Achievments/Achievments'));
-const Tasks = lazy(() => import('../Tasks/Tasks'));
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
@@ -30,7 +26,7 @@ export default function App() {
     <Suspense fallback={<LoadingPage />}>
       {isLoggedIn !== null ? (
         <Routes>
-          <Route path="game/*" element={<Game components={[Home, Invites, Achievements, Tasks]} />} />
+          <Route path="game/*" element={<Game />} />
           <Route path="sign-up" element={<SignUp onContinue={() => setIsLoggedIn(true)} refLink={referalLink} />} />
           <Route path="*" element={<Navigate to={isLoggedIn ? '/game' : '/sign-up'} />} />
         </Routes>

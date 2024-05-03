@@ -1,6 +1,6 @@
 import './Game.scss';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { LazyExoticComponent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import GameHeader from '../GameHeader/GameHeader';
 import Home from '../Home/Home';
@@ -8,19 +8,12 @@ import Invites from '../Invites/Invites';
 import Achievments from '../Achievments/Achievments';
 import Tasks from '../Tasks/Tasks';
 
-// interface IGame {
-//   components: LazyExoticComponent<() => JSX.Element>[];
-// }
-
-export default function Game({ components }: IGame) {
-  // const [Home, Invites, Achievements, Tasks] = components;
+export default function Game() {
   const navigate = useNavigate();
   const [tab, setTab] = useState('home');
 
   useEffect(() => {
-    if (tab) {
-      navigate(`./${tab}`);
-    }
+    navigate(`./${tab || 'home'}`);
   }, [navigate, tab]);
 
   return (
