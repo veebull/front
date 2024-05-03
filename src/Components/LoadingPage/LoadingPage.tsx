@@ -1,24 +1,16 @@
-import './SignIn.scss';
+import './LoadingPage.scss';
 import { Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import LinearWithValueLabel from '../LinearWithValueLabel/LinearWithValueLabel';
-import { useNavigate } from 'react-router-dom';
 
 // @TODO реальной необходимости пока в этой страничке нет, но придает стиля
-const SignIn = () => {
-  const navigate = useNavigate();
+const LoadingPage = () => {
   const [firstLoading, setFirstLoading] = useState(0);
   const [secondLoading, setSecondLoading] = useState(0);
   const [thirdLoading, setThirdLoading] = useState(0);
 
-  useEffect(() => {
-    if (firstLoading === 100 && secondLoading === 100 && thirdLoading === 100) {
-      navigate('/game');
-    }
-  }, [firstLoading, navigate, secondLoading, thirdLoading]);
-
   return (
-    <main className="sign-in">
+    <main className="loading-page">
       <Typography variant="h3">Почти на месте!</Typography>
       <div>
         <Typography variant="h5">Пилим бобров</Typography>
@@ -40,4 +32,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default LoadingPage;

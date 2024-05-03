@@ -1,11 +1,16 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import SignUp from '../SignUp/SignUp';
-import SignIn from '../SignIn/SignIn';
-import Loader from '../Loader/Loader';
-import Game from '../Game/Game';
 import useTelegram from '~/lib/useTelegram';
+const SignUp = lazy(() => import('../SignUp/SignUp'));
+const LoadingPage = lazy(() => import('../LoadingPage/LoadingPage'));
+const Loader = lazy(() => import('../Loader/Loader'));
+const Game = lazy(() => import('../Game/Game'));
+
+const Home = lazy(() => import('../Home/Home'));
+const Invites = lazy(() => import('../Invites/Invites'));
+const Achievements = lazy(() => import('../Achievments/Achievments'));
+const Tasks = lazy(() => import('../Tasks/Tasks'));
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
@@ -21,16 +26,17 @@ export default function App() {
   }, [startParam, tg]);
 
   // TODO: защита роутов от случайных пользователей и несанкционированного доступа через браузер
-  return isLoggedIn !== null ? (
-    <>
-      <Routes>
-        <Route path="game/*" element={<Game />} />
-        <Route path="sign-in" element={<SignIn />} />
-        <Route path="sign-up" element={<SignUp onContinue={() => setIsLoggedIn(true)} refLink={referalLink} />} />
-        <Route path="*" element={<Navigate to={isLoggedIn ? '/sign-in' : '/sign-up'} />} />
-      </Routes>
-    </>
-  ) : (
-    <Loader height="100vh" />
+  return (
+    <Suspense fallback={<LoadingPage />}>
+      {isLoggedIn !== null ? (
+        <Routes>
+          <Route path="game/*" element={<Game components={[Home, Invites, Achievements, Tasks]} />} />
+          <Route path="sign-up" element={<SignUp onContinue={() => setIsLoggedIn(true)} refLink={referalLink} />} />
+          <Route path="*" element={<Navigate to={isLoggedIn ? '/game' : '/sign-up'} />} />
+        </Routes>
+      ) : (
+        <Loader height="100vh" />
+      )}
+    </Suspense>
   );
 }

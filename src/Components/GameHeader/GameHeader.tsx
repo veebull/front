@@ -32,7 +32,7 @@ const GameHeader = ({ headerClass = 'game__header', colorClass = 'game__color' }
 
   return (
     <header className={headerClass}>
-      <IconButton onClick={toggleSound} className={colorClass}>
+      <IconButton onClick={toggleSound} className={colorClass} title="Включить/выключить звук">
         {isSound ? <MusicNoteIcon /> : <MusicOffIcon />}
       </IconButton>
       <div>
