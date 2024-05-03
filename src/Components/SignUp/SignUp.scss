@@ -20,4 +20,18 @@
     gap: 20px;
     align-items: center;
   }
+
+  &__name-length {
+    color: green;
+
+    &_error {
+      color:brown;
+    }
+  }
+
+  &__referal {
+    display: flex;
+    align-items: center;
+    justify-content: 'center';
+  }
 }
