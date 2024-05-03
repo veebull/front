@@ -11,11 +11,14 @@ export default function Game() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(`./${tab}`);
+    if (tab) {
+      navigate(`./${tab}`);
+    }
   }, [navigate, tab]);
 
   return (
     <div className="game">
+      <p>{window.location.href}</p>
       <GameHeader headerClass="game__header" colorClass="game__color" />
       <ToggleButtonGroup
         className="game__btn-background"
@@ -38,7 +41,7 @@ export default function Game() {
           <Route path="invites" element={<Invites />} />
           <Route path="achievements" element={<div>Достижения</div>} />
           <Route path="tasks" element={<div>Задания</div>} />
-          <Route index element={<Navigate to={'./home'} />} />
+          <Route index element={<Navigate to={'home'} />} />
         </Routes>
       </main>
       <ToggleButtonGroup
