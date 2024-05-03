@@ -6,6 +6,7 @@ import Home from '../Home/Home';
 import GameHeader from '../GameHeader/GameHeader';
 import Invites from '../Invites/Invites';
 import Tasks from '../Tasks/Tasks';
+import Achievments from '../Achievments/Achievments';
 
 export default function Game() {
   const [tab, setTab] = useState('home');
@@ -39,7 +40,7 @@ export default function Game() {
         <Routes>
           <Route path="home" element={<Home />} />
           <Route path="invites" element={<Invites />} />
-          <Route path="achievements" element={<div>Достижения</div>} />
+          <Route path="achievements" element={<Achievments />} />
           <Route path="tasks" element={<Tasks />} />
           <Route index element={<Navigate to={'home'} />} />
         </Routes>

@@ -1,0 +1,33 @@
+@import "../../lib/constants";
+
+.achievs {
+  @include game-background-elements;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 20px;
+
+
+  &__list {
+    width: 100%;
+    padding: 0 20px;
+    margin: 0;
+
+    list-style: none;
+
+
+  }
+
+  &__item {
+    padding-bottom: 10px;
+
+    grid-template-columns: min-content 1fr max-content min-content min-content;
+    display: grid;
+    gap:15px;
+    align-items: center;
+  }
+}
