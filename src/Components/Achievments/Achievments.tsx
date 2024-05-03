@@ -16,6 +16,7 @@ const Achievments = () => {
       newAchievs[i].isGet = true;
       return newAchievs;
     });
+
     setUser((prev) => ({
       ...prev,
       totalTON: Number((prev.totalTON + achievs[i].reward).toFixed(3)),
@@ -23,17 +24,15 @@ const Achievments = () => {
   };
 
   useEffect(() => {
-    if (totalTaps % 10 === 0) {
-      setAchievs((prev) => {
-        const newAchievs = [...prev];
-        newAchievs.map((achiev) => {
-          if (achiev.completed === false && totalTaps >= achiev.target) {
-            achiev.completed = true;
-          }
-        });
-        return newAchievs;
+    setAchievs((prev) => {
+      const newAchievs = [...prev];
+      newAchievs.map((achiev) => {
+        if (achiev.completed === false && totalTaps >= achiev.target) {
+          achiev.completed = true;
+        }
       });
-    }
+      return newAchievs;
+    });
   }, [setAchievs, totalTaps]);
 
   return (
@@ -52,7 +51,7 @@ const Achievments = () => {
               <Button
                 variant={achiev.completed ? 'outlined' : 'contained'}
                 onClick={() => handleClick(i)}
-                disabled={!achiev.completed && !achiev.isGet}
+                disabled={!achiev.completed}
               >
                 get
               </Button>
