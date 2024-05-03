@@ -28,7 +28,7 @@ export default function App() {
         <Routes>
           <Route path="game/*" element={<Game />} />
           <Route path="sign-up" element={<SignUp onContinue={() => setIsLoggedIn(true)} refLink={referalLink} />} />
-          <Route path="*" element={<Navigate to={isLoggedIn ? '/game' : '/sign-up'} />} />
+          <Route path="*" element={<Navigate to={isLoggedIn ? './game' : './sign-up'} />} />
         </Routes>
       ) : (
         <Loader height="100vh" />
