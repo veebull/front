@@ -2,7 +2,7 @@ import './Home.scss';
 import { Typography } from '@mui/material';
 import { useAtom } from 'jotai';
 import { useState } from 'react';
-import { userAtom } from '~/lib/userAtom';
+import { userAtom } from '~/lib/atoms/userAtom';
 
 const Home = () => {
   const [user, setUser] = useAtom(userAtom);

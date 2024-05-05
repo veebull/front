@@ -1,7 +1,7 @@
 import './App.css';
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import useTelegram from '~/lib/useTelegram';
+import useTelegram from '~/lib/hooks/useTelegram';
 import Loader from '../Loader/Loader';
 
 const SignUp = lazy(() => import('../SignUp/SignUp'));

@@ -2,8 +2,8 @@ import './Achievments.scss';
 import { Button, Typography } from '@mui/material';
 import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { useEffect } from 'react';
-import { achievmentsAtom } from '~/lib/achievmentsAtom';
-import { userAtom } from '~/lib/userAtom';
+import { achievmentsAtom } from '~/lib/atoms/achievmentsAtom';
+import { userAtom } from '~/lib/atoms/userAtom';
 
 const Achievments = () => {
   const [achievs, setAchievs] = useAtom(achievmentsAtom);

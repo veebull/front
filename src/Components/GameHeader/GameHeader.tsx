@@ -3,7 +3,7 @@ import track from '../../assets/track.mp3';
 import MusicOffIcon from '@mui/icons-material/MusicOff';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import { useEffect, useState } from 'react';
-import { userAtom } from '~/lib/userAtom';
+import { userAtom } from '~/lib/atoms/userAtom';
 import { useAtomValue } from 'jotai';
 
 interface IGameHeader {

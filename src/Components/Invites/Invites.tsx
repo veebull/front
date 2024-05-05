@@ -3,8 +3,8 @@ import { Typography } from '@mui/material';
 import { useAtom } from 'jotai';
 import { useState } from 'react';
 import { appLink } from '~/lib/constants';
-import useTelegram from '~/lib/useTelegram';
-import { userAtom } from '~/lib/userAtom';
+import useTelegram from '~/lib/hooks/useTelegram';
+import { userAtom } from '~/lib/atoms/userAtom';
 
 const Invites = () => {
   const { userId } = useTelegram();

@@ -2,11 +2,11 @@ import './SignUp.scss';
 import { Button, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useTelegram from '../../lib/useTelegram.js';
+import useTelegram from '../../lib/hooks/useTelegram.js';
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSetAtom } from 'jotai';
-import { userAtom } from '~/lib/userAtom.js';
+import { userAtom } from '~/lib/atoms/userAtom.js';
 // import EditIcon from '@mui/icons-material/Edit';
 
 interface ISignUp {
