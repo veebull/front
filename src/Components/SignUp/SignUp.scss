@@ -15,7 +15,7 @@
     gap: 20px;
   }
 
-  &__avatar-container{
+  &__avatar-container {
     display: flex;
     gap: 20px;
     align-items: center;
@@ -25,7 +25,7 @@
     color: green;
 
     &_error {
-      color:brown;
+      color: brown;
     }
   }
 

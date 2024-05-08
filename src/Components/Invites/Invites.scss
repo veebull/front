@@ -1,6 +1,6 @@
-@import "../../lib/constants";
+@import '../../lib/constants';
 
-.invites{
+.invites {
   @include game-background-elements;
 
   padding: 20px;
@@ -12,8 +12,7 @@
 
   text-align: center;
 
-
-  &__content{
+  &__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,7 +26,11 @@
     color: $game-text-color2;
   }
 
-  &__referal-link{
+  &__referal-link-block {
+    font-size: 14px;
+  }
+
+  &__referal-link {
     text-decoration: underline;
     cursor: pointer;
   }

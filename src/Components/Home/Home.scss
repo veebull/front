@@ -1,7 +1,6 @@
 @use 'sass:math';
 @import '../../lib/constants';
 
-
 .home {
   height: 100%;
 
@@ -10,8 +9,7 @@
   justify-content: center;
   align-items: center;
 
-
-  &__img-container{
+  &__img-container {
     height: 100%;
     width: 100%;
 
@@ -21,14 +19,14 @@
     align-items: center;
   }
 
-  &__img{
+  &__img {
     // @include game-background-elements;
 
     $size: 35vw;
 
     width: $size;
     height: calc($size * 0.7);
-    background-image: url("../../assets/diamond-500-348.png");
+    background-image: url('../../assets/diamond-500-348.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -44,5 +42,4 @@
   :active .home__img {
     transform: scale(1.1) rotate(#{math.random(20) + 5}deg);
   }
-
 }

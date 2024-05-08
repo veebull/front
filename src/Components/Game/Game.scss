@@ -1,5 +1,4 @@
-@import "../../lib/constants";
-
+@import '../../lib/constants';
 
 .game {
   @include game-color-text;
@@ -7,12 +6,12 @@
   min-height: 100vh;
   display: grid;
   grid-template-rows: 8% 8% 76% 8%;
-  background-image: url("../../assets/Background-1920-1080.jpg");
+  background-image: url('../../assets/Background-1920-1080.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
 
-  &__header{
+  &__header {
     @include game-background-elements;
 
     display: grid;

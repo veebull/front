@@ -1,4 +1,4 @@
-@import "../../lib/constants";
+@import '../../lib/constants';
 
 @keyframes sway-y {
   from {
@@ -20,7 +20,6 @@
   }
 }
 
-
 .tasks {
   @include game-background-elements;
   height: 100%;
@@ -32,15 +31,12 @@
 
   gap: 20px;
 
-
   &__list {
     width: 100%;
     padding: 0 20px;
     margin: 0;
 
     list-style: none;
-
-
   }
 
   &__item {
@@ -48,10 +44,9 @@
 
     grid-template-columns: min-content 1fr max-content min-content;
     display: grid;
-    gap:10px;
+    gap: 10px;
     align-items: center;
   }
-
 
   &__btn {
     @include game-color-text;
@@ -66,5 +61,4 @@
       animation: sway-x 2s ease-in-out infinite alternate;
     }
   }
-
 }

@@ -28,8 +28,8 @@ const Invites = () => {
       <Typography variant="h5">Реферальная программа</Typography>
       <div className="invites__content">
         <Typography variant="h6">Ваш id: {userId}</Typography>
-        <Typography variant="h6">
-          Ваша реферальная ссылка:{' '}
+        <Typography className="invites__referal-link-block">
+          Ваша реферальная ссылка:
           <span className="invites__referal-link" onClick={handleClick}>
             {BOT_URL}?startapp={userId}
           </span>
