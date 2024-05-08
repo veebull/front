@@ -14,11 +14,11 @@ export const getUserData = (userInitData: string): Promise<{ user: IUserData }> 
     },
   })
     .then((res) => {
-      if (res.status === 200) {
-        return res.json();
-      }
+      // if (res.status === 200) {
+      return res.json();
+      // }
 
-      throw new Error('Failed to get user data');
+      // throw new Error('Failed to get user data');
     })
     .catch((err) => {
       console.error(err);
