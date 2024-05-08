@@ -3,9 +3,9 @@ import { BACK_URL } from './constants';
 
 export const getUserData = (userInitData: string): Promise<{ user: IUserData }> => {
   return fetch(BACK_URL + '/user?' + userInitData, {
-    headers: new Headers({
+    headers: {
       'ngrok-skip-browser-warning': '69420',
-    }),
+    },
   })
     .then((res) => {
       if (res.ok) {
@@ -22,10 +22,10 @@ export const getUserData = (userInitData: string): Promise<{ user: IUserData }> 
 export const createUser = (userInitData: string, gameName: string): Promise<{ user: IUserData }> => {
   return fetch(BACK_URL + '/user?' + userInitData, {
     method: 'POST',
-    headers: new Headers({
+    headers: {
       'ngrok-skip-browser-warning': '69420',
       'Content-Type': 'application/json;charset=utf-8',
-    }),
+    },
     body: JSON.stringify({
       dataGame: {
         name: gameName,
