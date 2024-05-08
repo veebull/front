@@ -11,10 +11,9 @@ const Invites = () => {
   const user = useAtom(userAtom);
   const [userMsg, setUserMsg] = useState('');
 
-  const handleClick = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-    console.log(e.currentTarget.innerText);
+  const handleClick = () => {
     navigator.clipboard
-      .writeText(e.currentTarget.innerText)
+      .writeText(`${BOT_URL}?startapp=${userId}`)
       .then(() => {
         setUserMsg('Ссылка скопирована!');
       })
@@ -28,11 +27,8 @@ const Invites = () => {
       <Typography variant="h5">Реферальная программа</Typography>
       <div className="invites__content">
         <Typography variant="h6">Ваш id: {userId}</Typography>
-        <Typography className="invites__referal-link-block">
-          Ваша реферальная ссылка:
-          <span className="invites__referal-link" onClick={handleClick}>
-            {BOT_URL}?startapp={userId}
-          </span>
+        <Typography className="invites__referal-link-block" variant="h6" onClick={handleClick}>
+          Кликните, чтобы скопировать вашу реферальную ссылку
         </Typography>
         {user[0].dataGame.byReferral && user[0].dataGame.byReferral !== null ? (
           <Typography variant="h6">Вас пригласил пользователь с id: {user[0].dataGame.byReferral}</Typography>
