@@ -2,7 +2,11 @@ import { IUserData } from './interfaces';
 import { BACK_URL } from './constants';
 
 export const getUserData = (userInitData: string): Promise<{ user: IUserData }> => {
-  return fetch(BACK_URL + '/user?' + userInitData)
+  return fetch(BACK_URL + '/user?' + userInitData, {
+    headers: new Headers({
+      'ngrok-skip-browser-warning': '69420',
+    }),
+  })
     .then((res) => {
       if (res.ok) {
         return res.json();
@@ -18,9 +22,10 @@ export const getUserData = (userInitData: string): Promise<{ user: IUserData }> 
 export const createUser = (userInitData: string, gameName: string): Promise<{ user: IUserData }> => {
   return fetch(BACK_URL + '/user?' + userInitData, {
     method: 'POST',
-    headers: {
+    headers: new Headers({
+      'ngrok-skip-browser-warning': '69420',
       'Content-Type': 'application/json;charset=utf-8',
-    },
+    }),
     body: JSON.stringify({
       dataGame: {
         name: gameName,
@@ -43,6 +48,7 @@ export const updateUser = (userInitData: string, newTotalTaps: number): void => 
   fetch(BACK_URL + '/user?' + userInitData, {
     method: 'PATCH',
     headers: {
+      'ngrok-skip-browser-warning': '69420',
       'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify({
