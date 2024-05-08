@@ -7,10 +7,11 @@ import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSetAtom } from 'jotai';
 import { userAtom } from '~/lib/atoms/userAtom.js';
+import { createUser } from '~/lib/botApi.js';
 // import EditIcon from '@mui/icons-material/Edit';
 
 interface ISignUp {
-  onContinue: () => void;
+  onContinue: (val?: boolean | null) => void;
   refLink: string | null;
 }
 
@@ -19,7 +20,7 @@ const SignUp = ({ onContinue, refLink }: ISignUp) => {
   const MIN_LENGTH = 5;
   const checkValid = (val: string) => val.length <= MAX_LENGTH && val.length >= MIN_LENGTH;
 
-  const { nickName, userId } = useTelegram();
+  const { nickName, userId, initData } = useTelegram();
   const navigate = useNavigate();
   const [name, setName] = useState(nickName || userId || '');
   const [isValid, setIsValid] = useState(checkValid(name));
@@ -31,9 +32,13 @@ const SignUp = ({ onContinue, refLink }: ISignUp) => {
   };
 
   const handleContinue = () => {
-    updateGlobalUser((prev) => ({ ...prev, name, byReferer: refLink || 'none' }));
     onContinue();
     navigate('..');
+    createUser(initData, name).then((data) => {
+      updateGlobalUser({ ...data.user });
+      console.log(data.user);
+      onContinue(true);
+    });
   };
 
   return (

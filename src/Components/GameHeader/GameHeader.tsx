@@ -37,11 +37,11 @@ const GameHeader = ({ headerClass = 'game__header', colorClass = 'game__color' }
       </IconButton>
       <div>
         <Typography variant="h6">
-          Total TON: <span>{user.totalTON}</span>
+          Diamonds: <span>{user?.dataGame?.totalTaps}</span>
         </Typography>
         {/* <Avatar alt="Your avatar" src={avatar} /> */}
       </div>
-      <Typography fontSize={'15px'}>{user.name}</Typography>
+      <Typography fontSize={'15px'}>{user?.dataGame?.name}</Typography>
     </header>
   );
 };

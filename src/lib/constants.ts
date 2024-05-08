@@ -2,7 +2,8 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import XIcon from '@mui/icons-material/X';
 
-export const appLink = 't.me/byUlbiTVtestbot/something';
+export const BOT_URL = 'https://t.me/byUlbiTVtestbot/something';
+export const BACK_URL = 'http://localhost:5000';
 
 export const defaultTasks = [
   {

@@ -7,7 +7,7 @@ import { userAtom } from '~/lib/atoms/userAtom';
 
 const Achievments = () => {
   const [achievs, setAchievs] = useAtom(achievmentsAtom);
-  const totalTaps = useAtomValue(userAtom).totalTaps;
+  const totalTaps = useAtomValue(userAtom).dataGame.totalTaps;
   const setUser = useSetAtom(userAtom);
 
   const handleClick = (i: number) => {
@@ -19,7 +19,10 @@ const Achievments = () => {
 
     setUser((prev) => ({
       ...prev,
-      totalTON: Number((prev.totalTON + achievs[i].reward).toFixed(3)),
+      dataGame: {
+        ...prev.dataGame,
+        totalTaps: Number((prev.dataGame.totalTaps + achievs[i].reward * 1000).toFixed(0)),
+      },
     }));
   };
 
@@ -44,7 +47,8 @@ const Achievments = () => {
             <li key={achiev.id} className="achievs__item">
               <achiev.icon />
               <Typography fontSize={14}>{achiev.title}</Typography>
-              <Typography fontSize={14}>+{achiev.reward} TON</Typography>
+              {/* модификатор временный, пока не определились с игровой валютой */}
+              <Typography fontSize={14}>+{achiev.reward * 1000} Tap</Typography>
               <Typography fontSize={14}>
                 {totalTaps}/{achiev.target}
               </Typography>

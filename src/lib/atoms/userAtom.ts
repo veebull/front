@@ -1,11 +1,21 @@
 import { atom } from 'jotai';
+import { IUserData } from '../interfaces';
 
 export const userAtom = atom({
-  id: '',
-  name: '',
-  avatar: '',
-  referalLink: '',
-  byReferer: 'none',
-  totalTaps: 0,
-  totalTON: 0,
-});
+  dataGame: {
+    name: '',
+    totalTaps: 0,
+    achievements: [],
+    tasks: [],
+    referalLink: '',
+    byReferral: null,
+    annexedByRef: [],
+  },
+  _id: '',
+  tgUserId: null,
+  firstName: 'Frich22(Артем - front-end)',
+  isSubscribed: null,
+  is_bot: null,
+  username: '',
+  languageCode: '',
+} as IUserData);

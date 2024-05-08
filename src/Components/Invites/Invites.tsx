@@ -2,7 +2,7 @@ import './Invites.scss';
 import { Typography } from '@mui/material';
 import { useAtom } from 'jotai';
 import { useState } from 'react';
-import { appLink } from '~/lib/constants';
+import { BOT_URL } from '~/lib/constants';
 import useTelegram from '~/lib/hooks/useTelegram';
 import { userAtom } from '~/lib/atoms/userAtom';
 
@@ -31,11 +31,11 @@ const Invites = () => {
         <Typography variant="h6">
           Ваша реферальная ссылка:{' '}
           <span className="invites__referal-link" onClick={handleClick}>
-            {appLink}?startapp={userId}
+            {BOT_URL}?startapp={userId}
           </span>
         </Typography>
-        {user[0].byReferer && user[0].byReferer !== 'none' ? (
-          <Typography variant="h6">Вас пригласил пользователь с id: {user[0].byReferer}</Typography>
+        {user[0].dataGame.byReferral && user[0].dataGame.byReferral !== null ? (
+          <Typography variant="h6">Вас пригласил пользователь с id: {user[0].dataGame.byReferral}</Typography>
         ) : null}
         <span className="invites__user-msg">{userMsg}</span>
       </div>

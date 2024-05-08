@@ -3,31 +3,50 @@ import { Suspense, lazy, useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import useTelegram from '~/lib/hooks/useTelegram';
 import Loader from '../Loader/Loader';
+import { getUserData, updateUser } from '~/lib/botApi';
+import { useAtom } from 'jotai';
+import { userAtom } from '~/lib/atoms/userAtom';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 const SignUp = lazy(() => import('../SignUp/SignUp'));
-const LoadingPage = lazy(() => import('../LoadingPage/LoadingPage'));
 const Game = lazy(() => import('../Game/Game'));
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
   const [referalLink, setReferalLink] = useState<string | null>(null);
-  const { tg, startParam } = useTelegram();
+  const [user, setUser] = useAtom(userAtom);
+  const { tg, startParam, initData } = useTelegram();
 
   useEffect(() => {
     tg.ready();
-    // TODO: проверить по id, зареган ли пользователь
-    // setTimeout(() => setIsLoggedIn(false), 2000);
-    setIsLoggedIn(false);
+    if (initData) {
+      getUserData(initData).then((data) => {
+        setIsLoggedIn(Boolean(data?.user?.dataGame?.name));
+        setUser({ ...data.user });
+      });
+    }
     setReferalLink(startParam);
-  }, [startParam, tg]);
+  }, [startParam, tg, initData, setUser]);
+
+  useEffect(() => {
+    const onUnload = () => updateUser(initData, user.dataGame.totalTaps);
+    window.addEventListener('beforeunload', onUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', onUnload);
+    };
+  }, [initData, user.dataGame.totalTaps]);
 
   // TODO: защита роутов от случайных пользователей и несанкционированного доступа через браузер
   return (
-    <Suspense fallback={<LoadingPage />}>
+    <Suspense fallback={<LoadingPage /> || 'Загружаю...'}>
       {isLoggedIn !== null ? (
         <Routes>
           <Route path="game/*" element={<Game />} />
-          <Route path="sign-up" element={<SignUp onContinue={() => setIsLoggedIn(true)} refLink={referalLink} />} />
+          <Route
+            path="sign-up"
+            element={<SignUp onContinue={(val = null) => setIsLoggedIn(val)} refLink={referalLink} />}
+          />
           <Route path="*" element={<Navigate to={isLoggedIn ? './game' : './sign-up'} />} />
         </Routes>
       ) : (
