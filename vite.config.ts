@@ -5,14 +5,15 @@ import dotenv from 'dotenv';
 
 export default () => {
   dotenv.config({ path: `./.env` });
-  const mode = process.env.VITE_MODE;
+  const MODE = process.env.VITE_MODE;
+  const PORT = Number(process.env.PORT || 0);
 
   return defineConfig({
     plugins: [react()],
-    base: `${mode === 'dev' ? '/' : '/front/'}`,
+    base: `${MODE === 'dev' ? '/' : '/front/'}`,
     server: {
       host: true,
-      port: 3000,
+      port: PORT || 3000,
     },
     resolve: {
       alias: {

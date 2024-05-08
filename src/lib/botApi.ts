@@ -12,7 +12,6 @@ export const getUserData = (userInitData: string): Promise<{ user: IUserData }> 
     })
     .catch((err) => {
       console.error(err);
-      alert(err.message);
     });
 };
 
@@ -37,7 +36,6 @@ export const createUser = (userInitData: string, gameName: string): Promise<{ us
     })
     .catch((err) => {
       console.error(err);
-      alert(err.message);
     });
 };
 

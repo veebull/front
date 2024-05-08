@@ -37,6 +37,17 @@ export default function App() {
     };
   }, [initData, user.dataGame.totalTaps]);
 
+  useEffect(() => {
+    if (isLoggedIn === null) {
+      const alertTimeout: NodeJS.Timeout = setTimeout(
+        () => alert('Кажется, произошла ошибка, сообщите пожалуйстам нам. У бота есть ссылка'),
+        5000,
+      );
+
+      return () => clearTimeout(alertTimeout);
+    }
+  }, [isLoggedIn]);
+
   // TODO: защита роутов от случайных пользователей и несанкционированного доступа через браузер
   return (
     <Suspense fallback={<LoadingPage /> || 'Загружаю...'}>
