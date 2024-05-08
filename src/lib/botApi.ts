@@ -14,7 +14,7 @@ export const getUserData = (userInitData: string): Promise<{ user: IUserData }> 
     },
   })
     .then((res) => {
-      if (res.ok) {
+      if (res.status === 200) {
         return res.json();
       }
 
