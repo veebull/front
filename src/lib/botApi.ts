@@ -1,8 +1,14 @@
 import { IUserData } from './interfaces';
 import { BACK_URL } from './constants';
 
+// ПРИМЕЧАНИЕ
+// mode: 'no-cors', т.к. домена нет как такового, а cors есть
+// 'ngrok-skip-browser-warning': '69420', - скипает предупреждение от ngrok и не стопорит работу
+// при нормальном доменном деплое проблема должна пропасть
+
 export const getUserData = (userInitData: string): Promise<{ user: IUserData }> => {
   return fetch(BACK_URL + '/user?' + userInitData, {
+    mode: 'no-cors',
     headers: {
       'ngrok-skip-browser-warning': '69420',
     },
@@ -21,6 +27,7 @@ export const getUserData = (userInitData: string): Promise<{ user: IUserData }> 
 
 export const createUser = (userInitData: string, gameName: string): Promise<{ user: IUserData }> => {
   return fetch(BACK_URL + '/user?' + userInitData, {
+    mode: 'no-cors',
     method: 'POST',
     headers: {
       'ngrok-skip-browser-warning': '69420',
@@ -46,6 +53,7 @@ export const createUser = (userInitData: string, gameName: string): Promise<{ us
 
 export const updateUser = (userInitData: string, newTotalTaps: number): void => {
   fetch(BACK_URL + '/user?' + userInitData, {
+    mode: 'no-cors',
     method: 'PATCH',
     headers: {
       'ngrok-skip-browser-warning': '69420',
