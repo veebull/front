@@ -49,8 +49,8 @@ export const createUser = (userInitData: string, gameName: string): Promise<{ us
     });
 };
 
-export const updateUser = (userInitData: string, newTotalTaps: number): void => {
-  fetch(BACK_URL + '/user?' + userInitData, {
+export const updateUser = (userInitData: string, newTotalTaps: number): Promise<unknown> => {
+  return fetch(BACK_URL + '/user?' + userInitData, {
     method: 'PATCH',
     headers: {
       'ngrok-skip-browser-warning': '69420',

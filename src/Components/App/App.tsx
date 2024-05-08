@@ -29,7 +29,11 @@ export default function App() {
   }, [startParam, tg, initData, setUser]);
 
   useEffect(() => {
-    const onUnload = () => updateUser(initData, user.dataGame.totalTaps);
+    const onUnload = async () => {
+      alert('i work');
+      await updateUser(initData, user.dataGame.totalTaps);
+      alert('i work2');
+    };
     window.addEventListener('beforeunload', onUnload);
 
     return () => {
