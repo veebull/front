@@ -3,7 +3,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import XIcon from '@mui/icons-material/X';
 
 export const BOT_URL = 'https://t.me/Clicker_Game_Blockchain_Bot/game';
-export const BACK_URL = 'https://http://176.109.111.182:5000';
+export const BACK_URL = '176.109.111.182:5000';
 // export const BOT_URL = 'https://t.me/byUlbiTVtestbot/something';
 // export const BACK_URL = 'http://localhost:5000';
 
