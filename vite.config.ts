@@ -2,6 +2,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import dotenv from 'dotenv';
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
+
 
 export default () => {
   dotenv.config({ path: `./.env` });
@@ -9,7 +11,7 @@ export default () => {
   const PORT = Number(process.env.PORT || 0);
 
   return defineConfig({
-    plugins: [react()],
+    plugins: [react(), nodePolyfills({include: ['buffer']})],
     base: `${MODE === 'dev' ? '/' : '/front/'}`,
     server: {
       host: true,

@@ -65,3 +65,57 @@ export const updateUser = (userInitData: string, newTotalTaps: number): Promise<
     console.error(err);
   });
 };
+
+export const mintTokensOnServer = async (tokens: number, address: string, selfMint: boolean) => {
+  const obj = {
+    tokens,
+    address,
+    selfMint
+  }
+  console.log(JSON.stringify(obj, (_, v) => typeof v === 'bigint' ? v.toString() : v))
+  return fetch(BACK_URL + '/mint', {
+    method: 'POST',
+    headers: {
+      'ngrok-skip-browser-warning': '69420',
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify(obj, (_, v) => typeof v === 'bigint' ? v.toString() : v),
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+
+      throw new Error('Failed with mint');
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+export const transferTokensOnServer = async (tokens: number, address: string) => {
+  const obj = {
+    tokens,
+    address
+  }
+  console.log(JSON.stringify(obj))
+  return fetch(BACK_URL + '/transfer', {
+    method: 'POST',
+    headers: {
+      'ngrok-skip-browser-warning': '69420',
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify(obj),
+  })
+    .then((res) => {
+      if (res.ok) {
+        
+        return res.json();
+      }
+      console.log(res)
+      throw new Error('Failed with transfer');
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};

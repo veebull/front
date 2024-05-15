@@ -11,11 +11,29 @@ import LoadingPage from '../LoadingPage/LoadingPage';
 const SignUp = lazy(() => import('../SignUp/SignUp'));
 const Game = lazy(() => import('../Game/Game'));
 
+
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
   const [referalLink, setReferalLink] = useState<string | null>(null);
   const [user, setUser] = useAtom(userAtom);
   const { tg, startParam, initData } = useTelegram();
+
+
+  // for available in localhost only
+  useEffect(()=>{
+    console.log(window.location)
+      if (process.env.NODE_ENV !== 'production') {
+        const data = {
+          user: {
+            dataGame: {
+              name: "localhost"
+            }
+          }
+        }
+        setIsLoggedIn(Boolean(data?.user?.dataGame?.name));
+        // setUser({ ...data.user }); // 🔴 not working cause server connect
+    }
+  },[])
 
   useEffect(() => {
     tg.ready();

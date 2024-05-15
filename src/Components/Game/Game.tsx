@@ -7,6 +7,8 @@ import Home from '../Home/Home';
 import Invites from '../Invites/Invites';
 import Achievments from '../Achievments/Achievments';
 import Tasks from '../Tasks/Tasks';
+import TonConnectWallet from '../TonConnectWallet/TonConnectWallet'
+import TonGetCoins from '../TonGetCoins/TonGetCoins'
 
 export default function Game() {
   const navigate = useNavigate();
@@ -28,13 +30,17 @@ export default function Game() {
         onChange={(_, value) => setTab(value)}
         fullWidth
         exclusive
-      >
+        >
         <ToggleButton value={'achievements'} className="game__color">
           Достижения
         </ToggleButton>
         <ToggleButton value={'tasks'} className="game__color">
           Задачи
         </ToggleButton>
+          <div style={{marginRight: "40px"}}>
+            <TonConnectWallet/>
+            <TonGetCoins/>
+          </div>
       </ToggleButtonGroup>
       <main>
         <Routes>
